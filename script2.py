@@ -87,7 +87,9 @@ def main_menu():
             cv2.imshow(f"Graylevel Slicing ({lower}-{upper})", result)
 
         elif choice == "5":
-            bit_plane_slicing(image)
+            planes = bit_plane_slicing(image)
+            for i, plane in enumerate(planes):
+                cv2.imshow(f"Bit Plane {i}", plane)
 
         elif choice == "6":
             result = smoothen_image(image)
