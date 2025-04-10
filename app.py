@@ -61,9 +61,15 @@ if option != "None":
         st.image(sliced, caption=f"Graylevel Slicing ({lower}-{upper})", channels="GRAY")
 
     elif option == "Bit Plane Slicing":
-        planes = bit_plane_slicing(img)
+        gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # Ensure grayscale input
+        planes = bit_plane_slicing(gray_img)
+        st.subheader("Bit Planes (0-7)")
+        cols = st.columns(4)
         for i, plane in enumerate(planes):
-            st.image(plane, caption=f"Bit Plane {i}", channels="GRAY")
+            with cols[i % 4]:
+                st.image(plane, caption=f"Bit Plane {i}", channels="GRAY", use_container_width=True)
+
+
 
     elif option == "Smoothen Image using a 3x3 Kernel":
         smoothed = smoothen_image(img)
