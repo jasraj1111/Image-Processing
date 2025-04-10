@@ -15,6 +15,7 @@ This project is a web-based image processing suite built with **Streamlit** and 
 - 🔘 Apply binary thresholding
 - 🎯 Perform graylevel slicing
 - 🧠 Explore individual bit planes (Bit Plane Slicing)
+- Smoothning using a 3x3 Kernel
 
 
 
