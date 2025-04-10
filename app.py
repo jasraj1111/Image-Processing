@@ -8,6 +8,7 @@ from script2 import contrast_stretching
 from script2 import thresholding
 from script2 import graylevel_slicing
 from script2 import bit_plane_slicing
+from script2 import smoothen_image
 from PIL import Image
 import numpy as np
 
@@ -34,7 +35,8 @@ option = st.selectbox(
         "Contrast Stretching",
         "Thresholding",
         "Graylevel Slicing",
-        "Bit Plane Slicing"
+        "Bit Plane Slicing",
+        "Smoothen Image using a 3x3 Kernel"
     ]
 )
 
@@ -62,6 +64,10 @@ if option != "None":
         planes = bit_plane_slicing(img)
         for i, plane in enumerate(planes):
             st.image(plane, caption=f"Bit Plane {i}", channels="GRAY")
+
+    elif option == "Smoothen Image using a 3x3 Kernel":
+        smoothed = smoothen_image(img)
+        st.image(smoothed, caption="Smoothed Image using 3x3 Kernel", channels="GRAY")
 
     elif option == "Display Image":
         display_image("Original Image", img)

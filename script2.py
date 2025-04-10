@@ -50,6 +50,13 @@ def bit_plane_slicing(img):
         cv2.imshow(f"Bit Plane {i}", plane)
     return planes
 
+def smoothen_image(img):
+    kernel = np.ones((3, 3), np.float32) / 9
+    smoothed = cv2.filter2D(img, -1, kernel)
+    return smoothed
+
+
+
 
 def main_menu():
     while True:
@@ -59,8 +66,9 @@ def main_menu():
         print("3. Thresholding")
         print("4. Graylevel Slicing")
         print("5. Bit Plane Slicing")
-        print("6. Exit")
-        choice = input("Enter your choice (1-6): ")
+        print("6. Smoothen Image using a 3x3 Kernel")
+        print("7. Exit")
+        choice = input("Enter your choice (1-7): ")
 
         if choice == "1":
             plot_histogram(image)
@@ -83,6 +91,10 @@ def main_menu():
             bit_plane_slicing(image)
 
         elif choice == "6":
+            result = smoothen_image(image)
+            cv2.imshow("Smoothed Image using 3x3 Kernel", result)
+
+        elif choice == "7":
             print("Exiting...")
             break
 
