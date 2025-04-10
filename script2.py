@@ -47,7 +47,6 @@ def bit_plane_slicing(img):
         plane = cv2.bitwise_and(img, 1 << i)
         plane = np.where(plane > 0, 255, 0).astype(np.uint8)
         planes.append(plane)
-        cv2.imshow(f"Bit Plane {i}", plane)
     return planes
 
 def smoothen_image(img):
