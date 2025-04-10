@@ -20,7 +20,7 @@ st.title("🖼️ Image Processing with OpenCV + Streamlit")
 image_option = st.selectbox("Choose an image to process:", ("pic_1.jpg", "pic_2.jpg"))
 img = cv2.imread(image_option)  # This loads it in BGR (default)
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB for Streamlit
-st.image(img_rgb, caption="Original Image", use_column_width=True)
+st.image(img_rgb, caption="Original Image", use_container_width=True)
 
 
 # Operation choice
